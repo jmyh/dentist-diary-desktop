@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.4047287899860918" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" orientation="VERTICAL" prefHeight="721.0" prefWidth="1176.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.fx.controllers.MainController">
+   <items>
+      <HBox prefHeight="303.0" prefWidth="1106.0">
+         <children>
+            <VBox maxWidth="-Infinity" prefHeight="341.0" prefWidth="615.0">
+               <children>
+                  <ToolBar maxHeight="-Infinity" maxWidth="620.0" prefHeight="45.0" prefWidth="566.0" VBox.vgrow="ALWAYS">
+                     <items>
+                        <Button fx:id="addPatientBut" mnemonicParsing="false" onAction="#addPatient" text="Добавить  пациента" />
+                        <Button fx:id="delPatientBut" mnemonicParsing="false" onAction="#delPatient" text="Удалить пациента" />
+                        <Button fx:id="clearBut" mnemonicParsing="false" onAction="#clearFields" text="Очистить поля" />
+                        <Button fx:id="updatePatientBut" mnemonicParsing="false" onAction="#updatePatient" text="Обновить" />
+                        <Button fx:id="searchBut" mnemonicParsing="false" onAction="#search" text="Поиск" />
+                     </items>
+                  </ToolBar>
+                  <HBox prefHeight="296.0" prefWidth="407.0">
+                     <children>
+                        <VBox prefHeight="242.0" prefWidth="307.0">
+                           <children>
+                              <Label text="Фамилия">
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="30.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="surnameTF" promptText="Иванов">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label text="Имя">
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="nameTF" promptText="Иван">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label text="Отчество">
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="patronymicTF" promptText="Иванович">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="242.0" prefWidth="307.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Дата рождения">
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="30.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <DatePicker fx:id="birthdateDP" prefHeight="31.0" prefWidth="301.0" promptText="дд.мм.гггг">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin>
+                              </DatePicker>
+                              <Label text="Адрес проживания">
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea fx:id="addressTA" prefHeight="93.0" prefWidth="243.0" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin>
+                              </TextArea>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ToolBar orientation="VERTICAL" prefHeight="301.0" prefWidth="61.0">
+              <items>
+                <Button fx:id="addVisitBut" mnemonicParsing="false" onAction="#addVisit" prefHeight="31.0" prefWidth="47.0" text="add" />
+                  <Button fx:id="delVisitBut" mnemonicParsing="false" onAction="#deleteVisit" prefHeight="31.0" prefWidth="47.0" text="del" />
+                  <Button fx:id="editVisitBut" mnemonicParsing="false" onAction="#updateVisit" prefHeight="31.0" prefWidth="47.0" text="edit" />
+              </items>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </ToolBar>
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="340.0" prefWidth="558.0" HBox.hgrow="ALWAYS">
+               <content>
+                  <Accordion fx:id="accordion" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="335.0" prefWidth="550.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="407.0" prefWidth="1179.0">
+         <children>
+            <TitledPane prefHeight="347.0" prefWidth="1106.0" text="База данных" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <TableView fx:id="DBTable" onMouseClicked="#selectPatient" prefHeight="365.0" prefWidth="1176.0">
+                     <columns>
+                        <TableColumn fx:id="surnameCol" maxWidth="235.0" minWidth="147.0" prefWidth="147.0" text="Фамилия" />
+                        <TableColumn fx:id="nameCol" maxWidth="235.0" minWidth="147.0" prefWidth="147.0" text="Имя" />
+                        <TableColumn fx:id="patronymicCol" maxWidth="235.0" minWidth="147.0" prefWidth="147.0" text="Отчество" />
+                        <TableColumn fx:id="birthdateCol" maxWidth="235.0" minWidth="147.0" prefWidth="147.0" text="Дата рождения" />
+                        <TableColumn fx:id="addressCol" minWidth="147.0" prefWidth="580.0" text="Адрес проживания" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </content>
+            </TitledPane>
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
